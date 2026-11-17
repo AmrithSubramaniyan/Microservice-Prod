@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -49,12 +50,15 @@ public class NotificationService {
     }
 
     public List<NotificationLog> getAllNotifications() {
-        return new ArrayList<>(notifications);
+        return notifications.stream()
+                .filter(java.util.Objects::nonNull)
+                .collect(Collectors.toList());
     }
 
     public List<NotificationLog> getNotificationsByCustomerId(Long customerId) {
         return notifications.stream()
-                .filter(n -> customerId != null && customerId.equals(n.getCustomerId()))
+                .filter(java.util.Objects::nonNull)
+                .filter(n -> Optional.ofNullable(customerId).filter(id -> id.equals(n.getCustomerId())).isPresent())
                 .collect(Collectors.toList());
     }
 }

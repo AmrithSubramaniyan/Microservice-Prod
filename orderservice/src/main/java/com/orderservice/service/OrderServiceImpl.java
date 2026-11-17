@@ -32,7 +32,9 @@ public class OrderServiceImpl implements OrderService{
 	@Cacheable(value = "orders")
 	public List<Orders> getAllOrders() {
 		log.info("Fetching all orders from database");
-		return orderRepository.findAll();
+		return orderRepository.findAll().stream()
+				.filter(java.util.Objects::nonNull)
+				.collect(java.util.stream.Collectors.toList());
 	}
 
 	@Override

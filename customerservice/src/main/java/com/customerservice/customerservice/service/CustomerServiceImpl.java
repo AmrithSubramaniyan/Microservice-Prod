@@ -34,30 +34,34 @@ public class CustomerServiceImpl implements CustomerService {
 	@Cacheable(value = "customers")
 	public List<Customer> fetchAllCustomers() {
 		log.info("Fetching all customers from database");
-		return customerRepository.findAll();
+		return customerRepository.findAll().stream()
+				.filter(java.util.Objects::nonNull)
+				.collect(java.util.stream.Collectors.toList());
 	}
 
 	@Override
 	@Cacheable(value = "customer", key = "#id")
 	public Optional<Customer> getCustomerById(Long id) {
 		log.info("Fetching customer by id {} from database", id);
-		Optional<Customer> optCust= customerRepository.findById(id);
-		if(optCust.isEmpty()) {
-			log.error("Customer not found for id: {}", id);
-			throw new CustomerNotFoundException(id);
-		}
-		return optCust;
+		return Optional.ofNullable(id)
+				.flatMap(customerRepository::findById)
+				.map(Optional::of)
+				.orElseThrow(() -> {
+					log.error("Customer not found for id: {}", id);
+					return new CustomerNotFoundException(id);
+				});
 	}
 
 	@Override
 	@CacheEvict(value = "customers", allEntries = true)
 	public Customer createCustomer(Customer newCustomer) {
 		log.info("Creating new customer with email {}", newCustomer.getEmail());
-		Customer customer=  customerRepository.getCustomerByEmail(newCustomer.getEmail());
-		if(customer!=null) {
-			log.error("Customer already exists with email: {}", newCustomer.getEmail());
-			throw new CustomerAlreadyExistsException(newCustomer.getEmail());
-		}
+		Optional.ofNullable(newCustomer.getEmail())
+				.map(customerRepository::getCustomerByEmail)
+				.ifPresent(existing -> {
+					log.error("Customer already exists with email: {}", existing.getEmail());
+					throw new CustomerAlreadyExistsException(existing.getEmail());
+				});
 		return customerRepository.save(newCustomer);
 	}
 
@@ -68,19 +72,19 @@ public class CustomerServiceImpl implements CustomerService {
 	)
 	public Customer updateCustomer(Customer newCustomer, Long id) {
 		log.info("Updating customer with id {}", id);
-		Optional<Customer> custOptional=customerRepository.findById(id);
-		Customer custObj=null;
-		if(custOptional.isPresent()) {
-			custObj=custOptional.get();
-			custObj.setName(newCustomer.getName());
-			custObj.setEmail(newCustomer.getEmail());
-			custObj.setLocation(newCustomer.getLocation());
-			custObj.setPhonenumber(newCustomer.getPhonenumber());
-			log.debug("Updated customer fields for id {}", id);
-		} else {
-			log.warn("Attempted to update non-existent customer id {}", id);
-		}
-		return customerRepository.save(custObj);
+		return customerRepository.findById(id)
+				.map(custObj -> {
+					custObj.setName(newCustomer.getName());
+					custObj.setEmail(newCustomer.getEmail());
+					custObj.setLocation(newCustomer.getLocation());
+					custObj.setPhonenumber(newCustomer.getPhonenumber());
+					log.debug("Updated customer fields for id {}", id);
+					return customerRepository.save(custObj);
+				})
+				.orElseGet(() -> {
+					log.warn("Attempted to update non-existent customer id {}", id);
+					return customerRepository.save(null);
+				});
 	}
 
 	@Override
@@ -92,24 +96,24 @@ public class CustomerServiceImpl implements CustomerService {
 	)
 	public String deleteCustomer(Long id) {
 		log.info("Deleting customer with id {}", id);
-		Optional<Customer> custOptional=customerRepository.findById(id);
-		Customer custObj=null;
-		String deleteMsg=null;
-		if(custOptional.isPresent()) {
-			custObj=custOptional.get();
-			customerRepository.delete(custObj);
-			deleteMsg="Customer Successfully Deleted for id:"+id;
-			log.debug("Successfully deleted customer id {}", id);
-		} else {
-			log.warn("Attempted to delete non-existent customer id {}", id);
-		}
-		return deleteMsg;
+		return customerRepository.findById(id)
+				.map(cust -> {
+					customerRepository.delete(cust);
+					log.debug("Successfully deleted customer id {}", id);
+					return "Customer Successfully Deleted for id:" + id;
+				})
+				.orElseGet(() -> {
+					log.warn("Attempted to delete non-existent customer id {}", id);
+					return null;
+				});
 	}
 
 	@Override
 	public Customer getCustomerByEmail(String email) {
 		log.info("Fetching customer by email: {}", email);
-		return customerRepository.getCustomerByEmail(email);
+		return Optional.ofNullable(email)
+				.map(customerRepository::getCustomerByEmail)
+				.orElse(null);
 	}
 
 }

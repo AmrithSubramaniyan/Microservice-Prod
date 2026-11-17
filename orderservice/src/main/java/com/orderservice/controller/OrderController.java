@@ -33,7 +33,7 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
-	@PostMapping("/orders/placeorder")
+	@PostMapping({"/orders/placeorder", "/orders"})
 	public ResponseEntity<String> postMethodName(@RequestBody Orders newOrder) {
 		log.info("Received request to place order for customer id: {}", newOrder.getCustomerId());
 		//fetch customer from customer service for the given cust id
