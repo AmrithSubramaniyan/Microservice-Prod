@@ -78,7 +78,7 @@ const Cart = {
     }
 };
 
-// Rich Indian E-Commerce Product Catalog across Shoes, Electronics, Snacks, Groceries, Men's Lifestyle & Gadgets
+// Rich Indian E-Commerce Product Catalog with Bulletproof & Fast CDN Images
 const PRODUCTS = [
     // === SHOES ===
     {
@@ -89,7 +89,7 @@ const PRODUCTS = [
         rating: 4.8,
         reviews: 1420,
         badge: "Bestseller",
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80",
         description: "Responsive cushioning with React foam and Zoom Air units for daily runs and marathon training."
     },
     {
@@ -100,7 +100,7 @@ const PRODUCTS = [
         rating: 4.7,
         reviews: 950,
         badge: "Classic",
-        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&auto=format&fit=crop&q=80",
         description: "Iconic shell-toe classic streetwear sneaker with smooth full-grain leather upper and rubber outsole."
     },
     {
@@ -111,7 +111,7 @@ const PRODUCTS = [
         rating: 4.6,
         reviews: 430,
         badge: "Hot Deal",
-        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&auto=format&fit=crop&q=80",
         description: "Lightweight, nitrogen-infused foam midsole offering high energy rebound and grip on roads."
     },
 
@@ -124,7 +124,7 @@ const PRODUCTS = [
         rating: 4.9,
         reviews: 820,
         badge: "Apple Official",
-        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80",
         description: "Strikingly thin design with Liquid Retina display, 18-hour battery, and blazing M3 processing."
     },
     {
@@ -135,7 +135,7 @@ const PRODUCTS = [
         rating: 4.8,
         reviews: 2150,
         badge: "Top Rated",
-        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80",
         description: "Industry-leading noise cancellation, crystal clear hands-free calling, and up to 30 hours playback."
     },
     {
@@ -146,7 +146,7 @@ const PRODUCTS = [
         rating: 4.9,
         reviews: 1680,
         badge: "Flagship",
-        image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80",
         description: "Galaxy AI features, embedded S-Pen, titanium shield, and 200MP Quad Telephoto camera."
     },
     {
@@ -157,7 +157,7 @@ const PRODUCTS = [
         rating: 4.8,
         reviews: 740,
         badge: "Popular",
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80",
         description: "Advanced health sensors, ECG app, blood oxygen tracking, and innovative double-tap gesture control."
     },
     {
@@ -168,7 +168,7 @@ const PRODUCTS = [
         rating: 4.9,
         reviews: 3100,
         badge: "Productivity",
-        image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80",
         description: "Quiet-click electromagnetic MagSpeed scroll wheel, 8,000 DPI track-on-glass sensor."
     },
 
@@ -181,7 +181,7 @@ const PRODUCTS = [
         rating: 4.6,
         reviews: 412,
         badge: "Trending",
-        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&auto=format&fit=crop&q=80",
         description: "100% long-staple Egyptian cotton with wrinkle-resistant finish and structured button-down collar."
     },
     {
@@ -192,7 +192,7 @@ const PRODUCTS = [
         rating: 4.7,
         reviews: 1850,
         badge: "Essential",
-        image: "https://images.unsplash.com/photo-1542272604-780c96856465?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&auto=format&fit=crop&q=80",
         description: "Modern slim silhouette with added room for comfort and durable stretch cotton denim."
     },
     {
@@ -203,20 +203,20 @@ const PRODUCTS = [
         rating: 4.8,
         reviews: 890,
         badge: "Luxury",
-        image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&auto=format&fit=crop&q=80",
         description: "Roman numeral navy dial, stainless steel case, and genuine rich brown leather strap."
     },
 
     // === SNACKS & GROCERIES ===
     {
         id: "snack-1",
-        name: "Happilo Premium California Roasted & Salted Almonds (500g)",
+        name: "Happilo California Roasted & Salted Almonds 500g",
         category: "Snacks",
         price: 499,
         rating: 4.7,
         reviews: 2600,
         badge: "Healthy",
-        image: "https://images.unsplash.com/photo-1508061252445-5350f3ab0a55?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1514733670139-4d87a1941d55?w=600&auto=format&fit=crop&q=80",
         description: "Crunchy, non-GMO, gluten-free dry-roasted whole almonds packed with healthy fats and protein."
     },
     {
@@ -227,29 +227,29 @@ const PRODUCTS = [
         rating: 4.9,
         reviews: 3820,
         badge: "Celebration",
-        image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80",
         description: "Crispy wafer shell enveloped in milk chocolate and hazelnut pieces with a whole hazelnut center."
     },
     {
         id: "groc-1",
-        name: "Organic Tattva Extra Virgin Cold-Pressed Olive Oil (1L)",
+        name: "Organic Extra Virgin Cold-Pressed Olive Oil (1L)",
         category: "Groceries",
         price: 1199,
         rating: 4.8,
         reviews: 640,
         badge: "Organic",
-        image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80",
         description: "First cold pressed from sun-ripened olives, rich in antioxidants and heart-healthy polyphenols."
     },
     {
         id: "groc-2",
-        name: "Twinings English Breakfast & Green Tea Gift Chest",
+        name: "Twinings English Breakfast & Pure Green Tea Box",
         category: "Groceries",
         price: 899,
         rating: 4.7,
         reviews: 512,
         badge: "Specialty",
-        image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80",
+        image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&auto=format&fit=crop&q=80",
         description: "Curated selection of handpicked aromatic black, herbal, and pure green tea blends."
     }
 ];
@@ -261,6 +261,20 @@ function formatINR(amount) {
         currency: 'INR',
         maximumFractionDigits: 0
     }).format(amount);
+}
+
+// Fallback image handler for any network failure
+function handleImageError(img, category) {
+    const fallbacks = {
+        'Shoes': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80',
+        'Electronics': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
+        'Gadgets': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80',
+        'Men': 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&auto=format&fit=crop&q=80',
+        'Snacks': 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80',
+        'Groceries': 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80'
+    };
+    img.onerror = null;
+    img.src = fallbacks[category] || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80';
 }
 
 // Toast notification
@@ -297,4 +311,3 @@ function showToast(message, type = "info") {
         setTimeout(() => toast.remove(), 350);
     }, 3200);
 }
-

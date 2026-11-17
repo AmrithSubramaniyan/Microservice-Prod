@@ -296,7 +296,7 @@
                 card.innerHTML = `
                     <div>
                         <div class="w-full h-56 bg-slate-100 overflow-hidden relative">
-                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="handleImageError(this, '${p.category}')" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                             <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-md text-slate-800 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow-xs">
                                 ${p.category}
                             </span>
@@ -374,7 +374,7 @@
                     const row = document.createElement("div");
                     row.className = "flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white";
                     row.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg bg-slate-100 flex-shrink-0">
+                        <img src="${item.image}" alt="${item.name}" onerror="handleImageError(this, '${item.category}')" class="w-14 h-14 object-cover rounded-lg bg-slate-100 flex-shrink-0">
                         <div class="flex-1 min-w-0">
                             <h4 class="font-bold text-xs text-slate-800 truncate">${item.name}</h4>
                             <div class="text-xs text-slate-500 mt-0.5">${formatINR(item.price)} &times; ${item.quantity}</div>
